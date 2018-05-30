@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+<meta charset="utf-8">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+	<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Movie Search</a>
+    </div>
+  </nav>
+
+
+
+<div class="container">
+<form action="/results" method="GET">
+    <input type="text" placeholder="search term" name="search">
+</form>
+
+<% if(typeof data['Search'] == 'undefined') { %>
+  <h2> No Results for <%= query %> </h2>
+<% } else { %>
+
+<h2>Results for <%= query %></h2>
+
+</div>
+
+
+
+<div class="parent"> 
+<% data["Search"].forEach(function(movie) { %>
+<div class="card3">
+  <div class="cardimg">
+  <img src="<%=movie['Poster']%>" alt="avatar" style="width: 100%; overflow: hidden;">
+  </div>
+  <div class="container2">
+    <h4><b><%= movie["Title"] %></b></h4> 
+    <p><%=movie["Year"]%></p> 
+  </div>
+</div>
+<% })%>
+</div>
+
+<% } %>
+ 
+
+</body>
+</html>
+
+
